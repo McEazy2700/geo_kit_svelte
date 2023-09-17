@@ -66,7 +66,7 @@
 	}
 </script>
 
-<main class="w-full flex items-center p-10 gap-10 flex-col">
+<div class="w-full flex items-center p-10 gap-10 flex-col">
 	<form class="max-w-5xl flex items-end gap-7">
 		<div class="flex flex-col items-center">
 			<h2 class="font-bold text-lg">Latitude</h2>
@@ -78,7 +78,7 @@
 						bind:value={latDeg}
 						bind:this={latDegRef}
 						on:keydown={(e) => e.key === 'Enter' && latMinRef.focus()}
-						class="input bg-transparent px-3 outline-none w-14"
+						class="input bg-transparent p-1 px-3 outline-none w-14"
 						placeholder="9°"
 					/>
 					<label class="font-bold text-lg" for="deg">&deg;</label>
@@ -90,7 +90,7 @@
 						bind:value={latMin}
 						bind:this={latMinRef}
 						on:keydown={(e) => e.key === 'Enter' && latSecRef.focus()}
-						class="input bg-transparent px-3 outline-none w-14"
+						class="input bg-transparent p-1 px-3 outline-none w-14"
 						placeholder="00'"
 					/>
 					<label class="font-bold text-lg" for="min">&prime;</label>
@@ -102,7 +102,7 @@
 						bind:value={latSec}
 						bind:this={latSecRef}
 						on:keydown={(e) => e.key === 'Enter' && lonDegRef.focus()}
-						class="input bg-transparent px-3 outline-none w-14"
+						class="input bg-transparent p-1 px-3 outline-none w-14"
 						placeholder={'00"'}
 					/>
 					<label class="font-bold text-lg" for="sec">&Prime;</label>
@@ -120,7 +120,7 @@
 						bind:value={lonDeg}
 						bind:this={lonDegRef}
 						on:keydown={(e) => e.key === 'Enter' && lonMinRef.focus()}
-						class="input bg-transparent px-3 outline-none w-14"
+						class="input bg-transparent p-1 px-3 outline-none w-14"
 						placeholder="6°"
 					/>
 					<label class="font-bold text-lg" for="deg">&deg;</label>
@@ -132,7 +132,7 @@
 						bind:value={lonMin}
 						bind:this={lonMinRef}
 						on:keydown={(e) => e.key === 'Enter' && lonSecRef.focus()}
-						class="input bg-transparent px-3 outline-none w-14"
+						class="input bg-transparent p-1 px-3 outline-none w-14"
 						placeholder="00'"
 					/>
 					<label class="font-bold text-lg" for="min">&prime;</label>
@@ -155,7 +155,7 @@
 								latDegRef.focus();
 							}
 						}}
-						class="input bg-transparent px-3 outline-none w-14"
+						class="input bg-transparent p-1 px-3 outline-none w-14"
 						placeholder={'00"'}
 					/>
 					<label class="font-bold text-lg" for="sec">&Prime;</label>
@@ -179,4 +179,4 @@
 	{:else if $result && $result.data}
 		<Table source={createTable({ coords: $result.data.parseCoordinates })} />
 	{/if}
-</main>
+</div>
