@@ -60,14 +60,7 @@
 	function createTable(coords: { coords: Coordinate[] }) {
 		const simpleTable: TableSource = {
 			head: ['S/N', 'Latitude (dec)', 'Latitude (deg)', 'Longitude (dec)', 'Longitude (deg)'],
-			body: tableMapperValues(coords.coords, ['id', 'lat', 'latStr', 'lon', 'lonStr']),
-			foot: [
-				'',
-				'',
-				'',
-				'<p class="text-lg font-bold">Total</p>',
-				`<p class="text-lg font-bold">${coords.coords.length}</p>`
-			]
+			body: tableMapperValues(coords.coords, ['id', 'lat', 'latStr', 'lon', 'lonStr'])
 		};
 		return simpleTable;
 	}
