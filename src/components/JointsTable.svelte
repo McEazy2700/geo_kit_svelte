@@ -1,8 +1,9 @@
 <script lang="ts">
-	export let joints: number[];
+	import jointValues from '$lib/stores/jontValues';
 </script>
 
-<div>
+<div class="flex items-center flex-col gap-4">
+	<h3 class="h3 font-semibold">Joint Values</h3>
 	<div
 		class={`
       grid w-full border border-secondary-800/30 rounded-md
@@ -10,9 +11,9 @@
       place-items-center divide-x divide-y divide-secondary-900/20
 		`}
 	>
-		{#each joints as joint}
+		{#each $jointValues as joint}
 			<div class="p-3">
-				{joint}
+				{joint < 10 ? `00${joint}` : joint < 100 ? `0${joint}` : joint}
 			</div>
 		{/each}
 	</div>
