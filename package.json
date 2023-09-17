@@ -15,6 +15,7 @@
 	"devDependencies": {
 		"@graphql-codegen/cli": "^5.0.0",
 		"@graphql-codegen/typescript": "^4.0.1",
+		"@iconify/svelte": "^3.1.4",
 		"@parcel/watcher": "^2.3.0",
 		"@skeletonlabs/skeleton": "^2.1.0",
 		"@skeletonlabs/tw-plugin": "^0.2.0",

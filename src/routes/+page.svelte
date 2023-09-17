@@ -67,7 +67,7 @@
 </script>
 
 <div class="w-full flex items-center p-10 gap-10 flex-col">
-	<form class="max-w-5xl flex items-end gap-7">
+	<form class="max-w-5xl flex flex-col md:flex-row items-end gap-7">
 		<div class="flex flex-col items-center">
 			<h2 class="font-bold text-lg">Latitude</h2>
 			<div class="flex items-center gap-3">

@@ -22,7 +22,7 @@
 	}
 </script>
 
-<div class="flex flex-col w-full items-center p-10">
+<div class="flex flex-col gap-5 w-full items-center p-10">
 	<h2 class="h2 self-start">Create Rossete Diagram</h2>
 	<div class="flex flex-col w-full gap-3 items-center">
 		<h4 class="h4">Enter joint values</h4>

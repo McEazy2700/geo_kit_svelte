@@ -1,5 +1,6 @@
 import { join } from 'path';
 import type { Config } from 'tailwindcss';
+import { myCustomTheme } from './src/lib/constants/theme';
 
 import { skeleton } from '@skeletonlabs/tw-plugin';
 
@@ -17,7 +18,7 @@ const config: Config = {
 
 	plugins: [
 		skeleton({
-			themes: { preset: ['skeleton'] }
+			themes: { custom: [myCustomTheme] }
 		})
 	]
 };
