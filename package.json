@@ -43,6 +43,7 @@
 	"dependencies": {
 		"@urql/svelte": "^4.0.4",
 		"chart.js": "^4.4.0",
-		"graphql": "15.8.0"
+		"graphql": "15.8.0",
+		"svelte-chartjs": "^3.1.2"
 	}
 }
