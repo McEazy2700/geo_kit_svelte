@@ -8,6 +8,6 @@ export default derived([jointValues, jointInterval], ([$jointValues, $jointInter
 
 	return ranges.map((range) => ({
 		name: range.toString(),
-		value: range.match($jointValues).length
+		value: range.match_count($jointValues)
 	}));
 });

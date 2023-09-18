@@ -46,28 +46,14 @@ export class Range {
 	 * a copy of the list that contains those matched values
 	 * @param list {number[]} a list of number from which the ranged values are matched
 	 * */
-	match(list: number[]): number[] {
+	match_count(list: number[]): number {
 		const sorted = list.toSorted((a, b) => a - b);
-		let startIndex: number | null = null;
-		let endIndex: number | null = null;
+		let count: number = 0;
 		for (let i = 0; i < sorted.length; i++) {
-			if (sorted[i] >= this.start) {
-				startIndex = i;
-				break;
+			if (sorted[i] >= this.start && sorted[i] <= this.end) {
+				count += 1;
 			}
 		}
-
-		for (let i = 0; i < sorted.length; i++) {
-			if (sorted[i] > this.end && sorted[i - 1]) {
-				endIndex = i - 1;
-				break;
-			}
-		}
-
-		if (startIndex !== null) {
-			const matched = sorted.slice(startIndex, endIndex ? endIndex + 1 : undefined);
-			return matched;
-		}
-		return [];
+		return count;
 	}
 }
