@@ -20,7 +20,8 @@ export function prepareRanges(interval: number) {
 				startRange < interval ? startRange + correctInterval : startRange + correctInterval - 1
 			)
 		);
-		startRange = startRange + correctInterval + 1;
+		startRange =
+			startRange < interval ? startRange + correctInterval + 1 : startRange + correctInterval;
 	}
 
 	return ranges;
