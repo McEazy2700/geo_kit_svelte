@@ -1,5 +1,5 @@
 import { derived } from 'svelte/store';
-import jointValues from './jontValues';
+import { jointValues } from '.';
 import jointInterval from './jointInterval';
 import { prepareRanges } from '$lib/utils/functions';
 

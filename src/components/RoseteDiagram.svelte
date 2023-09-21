@@ -4,8 +4,7 @@
 	Chart.register(Title, Tooltip, Legend, ArcElement, RadialLinearScale);
 	import type { ChartData } from 'chart.js';
 	import { RosePole } from '$lib/utils/classes';
-	import jointFrequency from '$lib/stores/jointFrequency';
-	import jointInterval from '$lib/stores/jointInterval';
+	import { jointValues, jointFrequencies, jointInterval } from '$lib/stores';
 	import { afterUpdate } from 'svelte';
 
 	const canvasId = 'rosette-diagram';
@@ -13,7 +12,7 @@
 
 	let data: ChartData<'polarArea', number[], unknown>;
 	afterUpdate(() => {
-		const rosePoles = $jointFrequency.map((freq) => new RosePole(freq.value, freq.name));
+		const rosePoles = $jointFrequencies.map((freq) => new RosePole(freq.value, freq.name));
 		const poleData = rosePoles.map((pole) => pole.value);
 
 		data = {
@@ -45,5 +44,9 @@
 		<input class="input w-12 px-3" type="number" bind:value={$jointInterval} />
 	</label>
 	<PolarArea id={canvasId} {data} />
-	<button on:click={download} class="btn variant-filled-success" type="button">Download</button>
+	{#if $jointValues.length > 0}
+		<button on:click={download} class="btn variant-filled hover:bg-secondary-900/80" type="button"
+			>Download Image</button
+		>
+	{/if}
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import JointsTable from '../../components/JointsTable.svelte';
 	import RoseteDiagram from '../../components/RoseteDiagram.svelte';
-	import jontValues from '$lib/stores/jontValues';
+	import { jointValues } from '$lib/stores';
 	import JointFrequencies from '../../components/JointFrequencies.svelte';
 
 	let jointValue: number;
@@ -17,7 +17,7 @@
 			} else {
 				correct = jointValue;
 			}
-			jontValues.push(correct);
+			jointValues.push(correct);
 		}
 	}
 </script>
@@ -48,7 +48,7 @@
 				type="button">Add</button
 			>
 		</div>
-		<div class="flex flex-col items-center justify-evenly w-full p-1 gap-7">
+		<div class="flex flex-col items-center justify-evenly w-full p-1 gap-14">
 			<div class="max-w-2xl w-screen">
 				<RoseteDiagram />
 			</div>

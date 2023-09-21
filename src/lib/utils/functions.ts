@@ -1,4 +1,5 @@
 import { Range } from './classes';
+import { utils, writeFile } from 'xlsx';
 
 export function prepareRanges(interval: number) {
 	let correctInterval: number;
@@ -25,4 +26,9 @@ export function prepareRanges(interval: number) {
 	}
 
 	return ranges;
+}
+
+export function downloadSreadsheetFromTable(ref: HTMLTableElement, fileName: string) {
+	const wb = utils.table_to_book(ref);
+	writeFile(wb, `${fileName}.xlsx`);
 }
