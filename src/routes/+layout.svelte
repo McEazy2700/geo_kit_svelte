@@ -6,9 +6,10 @@
 <svelte:head>
 	<title>GeoKit</title>
 </svelte:head>
-<main>
-	<NavBar />
+
+<NavBar />
+<main class="w-full max-h-screen overflow-auto">
+	<slot />
 </main>
 
-<slot />
 <Footer />

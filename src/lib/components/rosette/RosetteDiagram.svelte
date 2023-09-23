@@ -6,10 +6,9 @@
 	import { RosePole } from '$lib/utils/classes';
 	import { jointValues, jointFrequencies, jointInterval } from '$lib/stores';
 	import { afterUpdate } from 'svelte';
+	import { Button, Input } from 'flowbite-svelte';
 
 	const canvasId = 'rosette-diagram';
-	// console.log($jointFrequency);
-
 	let data: ChartData<'polarArea', number[], unknown>;
 	afterUpdate(() => {
 		const rosePoles = $jointFrequencies.map((freq) => new RosePole(freq.value, freq.name));
@@ -32,21 +31,19 @@
 		const canvas = document.getElementById(canvasId) as HTMLCanvasElement | null;
 		if (canvas) {
 			anchor.href = canvas.toDataURL('image/png', 1);
-			anchor.download = 'rosette_diagra.png';
+			anchor.download = 'Rosette Diagram.png';
 			anchor.click();
 		}
 	}
 </script>
 
-<div class="flex items-center gap-5 flex-col">
-	<label class="font-bold text-lg">
-		Interval
-		<input class="input w-12 px-3" type="number" bind:value={$jointInterval} />
-	</label>
-	<PolarArea id={canvasId} {data} />
+<div class="flex w-full items-center gap-5 flex-col">
+	<div class="flex items-center gap-2">
+		<label for="joint-interval" class="font-bold text-lg"> Interval </label>
+		<Input id="joint-interval" class=" w-12 px-3" type="number" bind:value={$jointInterval} />
+	</div>
 	{#if $jointValues.length > 0}
-		<button on:click={download} class="btn variant-filled hover:bg-secondary-900/80" type="button"
-			>Download Image</button
-		>
+		<PolarArea id={canvasId} {data} />
+		<Button on:click={download} type="button">Download Image</Button>
 	{/if}
 </div>
