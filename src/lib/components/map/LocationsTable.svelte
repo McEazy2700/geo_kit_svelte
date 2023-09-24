@@ -38,5 +38,7 @@
 			{/each}
 		</TableBody>
 	</Table>
-	<Button type="button" on:click={handleDownload}>Download as spreadsheet</Button>
+	{#if $locations.length > 0}
+		<Button type="button" on:click={handleDownload}>Download as spreadsheet</Button>
+	{/if}
 </div>
