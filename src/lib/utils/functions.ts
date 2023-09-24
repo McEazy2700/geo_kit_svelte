@@ -32,3 +32,20 @@ export function downloadSreadsheetFromTable(ref: HTMLTableElement, fileName: str
 	const wb = utils.table_to_book(ref);
 	writeFile(wb, `${fileName}.xlsx`);
 }
+
+/**
+ * Returns a list of objects representing the range and the frequency
+ * @param values {number[]} a list of numbers to get the frequencies form
+ * @param interval {number} the gap between each range e.g 0-30 (30 is the interval)
+ */
+export const getJointFrequencies = (values: number[], interval: number) => {
+	if (typeof window !== 'undefined') {
+		const ranges = prepareRanges(interval);
+
+		return ranges.map((range) => ({
+			name: range.toString(),
+			value: range.match_count(values)
+		}));
+	}
+	return [];
+};

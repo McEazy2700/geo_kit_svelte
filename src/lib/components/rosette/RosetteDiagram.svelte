@@ -4,14 +4,17 @@
 	Chart.register(Title, Tooltip, Legend, ArcElement, RadialLinearScale);
 	import type { ChartData } from 'chart.js';
 	import { RosePole } from '$lib/utils/classes';
-	import { jointValues, jointFrequencies, jointInterval } from '$lib/stores';
+	import { jointValues, jointInterval } from '$lib/stores';
 	import { afterUpdate } from 'svelte';
 	import { Button, Input } from 'flowbite-svelte';
+	import { getJointFrequencies } from '$lib/utils/functions';
 
 	const canvasId = 'rosette-diagram';
 	let data: ChartData<'polarArea', number[], unknown>;
 	afterUpdate(() => {
-		const rosePoles = $jointFrequencies.map((freq) => new RosePole(freq.value, freq.name));
+		const rosePoles = getJointFrequencies($jointValues, $jointInterval).map(
+			(freq) => new RosePole(freq.value, freq.name)
+		);
 		const poleData = rosePoles.map((pole) => pole.value);
 
 		data = {

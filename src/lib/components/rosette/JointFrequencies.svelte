@@ -8,10 +8,11 @@
 		TableHead,
 		TableHeadCell
 	} from 'flowbite-svelte';
-	import { jointValues, jointFrequencies } from '$lib/stores';
-	import { downloadSreadsheetFromTable } from '$lib/utils/functions';
+	import { jointValues, jointInterval } from '$lib/stores';
+	import { downloadSreadsheetFromTable, getJointFrequencies } from '$lib/utils/functions';
 
 	const tableId = 'joint-frequencies';
+	$: jointFrequencies = getJointFrequencies($jointValues, $jointInterval);
 
 	function downloadFrequencies() {
 		let tableElement = document.getElementById(tableId) as HTMLTableElement;
@@ -27,7 +28,7 @@
 			<TableHeadCell>Frequencies</TableHeadCell>
 		</TableHead>
 		<TableBody>
-			{#each $jointFrequencies as freq}
+			{#each jointFrequencies as freq}
 				<TableBodyRow>
 					<TableBodyCell>{freq.name}</TableBodyCell>
 					<TableBodyCell>{freq.value}</TableBodyCell>
