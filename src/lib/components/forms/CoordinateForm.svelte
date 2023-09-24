@@ -1,30 +1,19 @@
 <script lang="ts">
-	import Card from '../Card.svelte';
-	import { Input } from '.';
+	import { CooridnateInput } from '.';
+	import { locations } from '$lib/stores/map';
+	import { Location } from '$lib/utils/classes';
 
-	let latDegRef: HTMLInputElement | null;
+	let latitude = '';
+	let longitude = '';
+
+	function handleComplete() {
+		locations.push(new Location(latitude, longitude));
+	}
 </script>
 
-<div class="grid grid-cols-1 md:grid-cols-2">
-	<Card>
-		<p class="text-lg">Longitude</p>
-		<div class="p-2 flex justify-around">
-			<Input
-				bind:ref={latDegRef}
-				class="!m-2 rounded-md w-16 text-xl"
-				type="number"
-				placeholder="9°"
-			/>
-			<Input class="!m-2 rounded-md w-16 text-xl" type="number" placeholder="00'" />
-			<Input class="!m-2 rounded-md w-16 text-xl" type="number" placeholder={'00"'} />
-		</div>
-	</Card>
-	<Card>
-		<p class="text-lg">Latitude</p>
-		<div class="flex justify-around">
-			<Input class="!m-2 rounded-md w-16 text-xl" type="number" placeholder="9°" />
-			<Input class="!m-2 rounded-md w-16 text-xl" type="number" placeholder="00'" />
-			<Input class="!m-2 rounded-md w-16 text-xl" type="number" placeholder={'00"'} />
-		</div>
-	</Card>
+<div class="w-full flex flex-col items-center">
+	<div class="flex items-center gap-20">
+		<CooridnateInput on:complete={handleComplete} bind:coordinate={latitude} name="Latitude" />
+		<CooridnateInput on:complete={handleComplete} bind:coordinate={longitude} name="Longitude" />
+	</div>
 </div>
